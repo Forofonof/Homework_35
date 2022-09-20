@@ -51,14 +51,23 @@ internal class Program
         Console.WriteLine("Введите Ф.И.О сотрудника:");
         string fullName = Console.ReadLine();
 
-        Console.WriteLine("Введите должность сотрудника:");
-        string position = Console.ReadLine();
-        
-        listDossiers.Add(fullName, position);
+        if (listDossiers.ContainsKey(fullName) == false)
+        {
+            Console.WriteLine("Введите должность сотрудника:");
+            string position = Console.ReadLine();
 
-        Console.WriteLine($"Успешно!\nНажмите любую кнопку, чтобы продолжить.");
-        Console.ReadKey();
-        Console.Clear();
+            listDossiers.Add(fullName, position);
+
+            Console.WriteLine($"Успешно!\nНажмите любую кнопку, чтобы продолжить.");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Ошибка!\nДанный сотрудник уже есть в базе данных.\nНажмите любую кнопку, чтобы продолжить.");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 
     static void OutputAllDossiers(Dictionary<string, string> listDossiers)
