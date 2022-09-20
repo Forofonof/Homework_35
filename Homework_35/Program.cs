@@ -87,11 +87,20 @@ internal class Program
     {
         Console.Clear();
         Console.WriteLine("Введите Ф.И.О Сотрудника, которого хотите удалить.");
+        string fullName = Console.ReadLine();
 
-        listDossiers.Remove(Console.ReadLine());
-
-        Console.WriteLine("Успешно!\nНажмите любую кнопку, чтобы продолжить.");
-        Console.ReadKey();
-        Console.Clear();
+        if (listDossiers.ContainsKey(fullName) == true)
+        {
+            listDossiers.Remove(fullName);
+            Console.WriteLine("Успешно!\nНажмите любую кнопку, чтобы продолжить.");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Грустно!\nДанного сотрудника нет в базе данных.\nНажмите любую кнопку, чтобы продолжить.");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 }
